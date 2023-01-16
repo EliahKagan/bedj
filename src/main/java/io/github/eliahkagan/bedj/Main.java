@@ -6,23 +6,38 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.IntStream;
 
+import com.codepoetics.protonpack.StreamUtils;
 import com.theokanning.openai.OpenAiService;
 import com.theokanning.openai.embedding.Embedding;
 import com.theokanning.openai.embedding.EmbeddingRequest;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        var service = new OpenAiService(getApiKey());
-
-        var texts = List.of(
+        var records = getWithEmbeddings(List.of(
             "French kissing experts",
             "kissing French experts",
             "The canine shall never perish from the earth.",
-            "Somewhere in the world, there will always be dogs.");
+            "Somewhere in the world, there will always be dogs."
+        ));
 
+        for (var i = 0; i < records.size(); ++i) {
+            for (var j = 0; j < records.size(); ++j) {
+                
+            }
+        }
+    }
+
+    private static List<WithEmbed>
+    getWithEmbeddings(List<String> texts) throws IOException {
         var embeddings = getEmbeddings(texts);
+
+        var zip = StreamUtils.zip(
+            texts.stream(),
+            embeddings.stream(),
+            WithEmbed::new);
+
+        return zip.toList();
     }
 
     private static List<List<Double>>
@@ -34,14 +49,12 @@ public class Main {
             .input(texts)
             .build();
 
-        var embeddings = service.createEmbeddings(request)
+        return service.createEmbeddings(request)
             .getData()
             .stream()
             .sorted(Comparator.comparing(Embedding::getIndex))
             .map(Embedding::getEmbedding)
             .toList();
-
-        System.out.println(embeddings);
     }
 
     private static String getApiKey() throws IOException {
@@ -55,18 +68,8 @@ public class Main {
         return key.strip();
     }
 
-    private static double dot(List<Double> vector1, List<Double> vector2) {
-        if (vector1.size() != vector2.size()) {
-            var message = String.format(
-                "can't dot vectors of different dimension (%d and %d)",
-                vector1.size(),
-                vector2.size());
-
-            throw new IllegalArgumentException(message);
-        }
-
-        return IntStream.range(0, vector1.size())
-            .mapToDouble(index -> vector1.get(index) * vector2.get(index))
-            .sum();
+    private static double dot(List<Double> xs, List<Double> ys) {
+        return StreamUtils.zip(xs.stream(), ys.stream(), (x, y) -> x * y)
+            .reduce(0.0, Double::sum);
     }
 }

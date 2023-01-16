@@ -1,2 +1,5 @@
-package io.github.eliahkagan.bedj;public record WithEmbed() {
-}
+package io.github.eliahkagan.bedj;
+
+import java.util.List;
+
+record WithEmbed(String text, List<Double> embedding) { }
