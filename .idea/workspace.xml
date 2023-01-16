@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1c14ec-121e-431c-989e-e5098fd8da52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/eliahkagan/bedj/WithEmbed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/eliahkagan/bedj/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/eliahkagan/bedj/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
