@@ -39,12 +39,11 @@ public class Main {
         ));
 
         // Show the table of similarities.
-        for (var row : embeddings) {
-            for (var col : embeddings) {
-                System.out.format(" %12.8f", dot(row, col));
-            }
+        embeddings.forEach(row -> {
+            embeddings.forEach(col ->
+                System.out.format(" %12.8f", dot(row, col)));
             System.out.println();
-        }
+        });
     }
 
     private static List<List<Double>>
