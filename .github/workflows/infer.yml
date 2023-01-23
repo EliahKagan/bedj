@@ -1,0 +1,26 @@
+name: "Infer"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '39 0 * * 2'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Run infer action
+        uses: docker://ghcr.io/martinwitt/infer-train:master
+        with:
+          build-command: "gradle compileJava"
+          use-annotations: "true"
