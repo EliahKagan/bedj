@@ -8,8 +8,8 @@ intended as a tutorial for how to use embeddings.
 For instructive examples, see the official OpenAI repository
 [**openai-cookbook**](https://github.com/openai/openai-cookbook).
 
-This repository, bedj, is like [bed](https://github.com/EliahKagan/bed), but
-this is in Java and less extensive.
+This repository, *bedj*, is like [*bed*](https://github.com/EliahKagan/bed),
+but this is in Java and less extensive.
 
 ## License
 
