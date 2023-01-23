@@ -38,10 +38,10 @@ public class Main {
             "The tabular data have been sequestered from the public."
         ));
 
-        for (var i = 0; i < embeddings.size(); ++i) {
-            for (var j = 0; j < embeddings.size(); ++j) {
-                var similarity = dot(embeddings.get(i), embeddings.get(j));
-                System.out.format(" %12.8f", similarity);
+        // Show the table of similarities.
+        for (var row : embeddings) {
+            for (var col : embeddings) {
+                System.out.format(" %12.8f", dot(row, col));
             }
             System.out.println();
         }
