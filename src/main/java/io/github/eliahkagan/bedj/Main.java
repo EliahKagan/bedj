@@ -28,7 +28,7 @@ public class Main {
         for (var i = 0; i < embeddings.size(); ++i) {
             for (var j = 0; j < embeddings.size(); ++j) {
                 var similarity = dot(embeddings.get(i), embeddings.get(j));
-                System.out.format(" %10f", similarity);
+                System.out.format(" %12.8f", similarity);
             }
             System.out.println();
         }
