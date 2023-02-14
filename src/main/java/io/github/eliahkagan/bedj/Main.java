@@ -21,9 +21,9 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.codepoetics.protonpack.StreamUtils;
-import com.theokanning.openai.OpenAiService;
 import com.theokanning.openai.embedding.Embedding;
 import com.theokanning.openai.embedding.EmbeddingRequest;
+import com.theokanning.openai.service.OpenAiService;
 
 public class Main {
     public static void main(String[] args) throws IOException {
