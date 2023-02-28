@@ -14,7 +14,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    permissions: write-all  # FIXME: Narrow this down before merging.
+    permissions:
+      contents: write
 
     steps:
       - name: Check out repository
