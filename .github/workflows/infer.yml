@@ -22,5 +22,5 @@ jobs:
       - name: Run infer action
         uses: docker://ghcr.io/martinwitt/infer-train:master
         with:
-          build-command: "nonexistent-command gradle compileJava" # Deliberately broken.
+          build-command: "mvn compile"
           use-annotations: "true"
